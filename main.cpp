@@ -90,34 +90,34 @@ void List::Print(){
 
 void List::AddInPos(int p){
     Element* temp = new Element;
-    Element* save = Tail;
+    Element* save = Head;
     for (int i = 1; i < p; i++){
-        Tail = Tail->Next;
+        Head = Head->Next;
     }
-    temp->Next = Tail->Next;
+    temp->Next = Head->Next;
     Count++;
-    Tail = save;
+    Head = save;
     delete[] save;
     
 }
 
 void List::DelInPos(int p){
-    Element* save = Tail;
+    Element* save = Head;
     for (int i = 1; i < p - 1; i++){
-        Tail = Tail->Next;
+        Head = Head->Next;
     }
     delete[] Tail->Next;
-    Tail->Next = Tail->Next->Next;
+    Head->Next = Head->Next->Next;
     Tail = save;
     delete[] save;
     Count--;
 }
 
 int List::Search(Element* el){
-    Element* save = Tail;
+    Element* save = Head;
     for (int i = 1; i < Count; i++){
-        Tail = Tail->Next;
-        if (Tail->data == el->data && Tail->Next == el->Next){
+        Head = Head->Next;
+        if (Head->data == el->data && Head->Next == el->Next){
             return i;
         }
     }
